@@ -5,7 +5,7 @@ REPORT_PATH="report"
 
 declare -a NETWORKS=("PyResNet"
                     "SSRN"
-                    "MS2KIResNet"
+                    "S3KAIResNet"
                     "ResNet"
                     "ContextualNet")
 

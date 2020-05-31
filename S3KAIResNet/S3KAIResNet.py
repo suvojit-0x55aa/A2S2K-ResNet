@@ -446,9 +446,9 @@ class Residual(nn.Module):  # pytorch
         return out
 
 
-class SSRN_network(nn.Module):
+class S3KAIResNet(nn.Module):
     def __init__(self, band, classes, reduction):
-        super(SSRN_network, self).__init__()
+        super(S3KAIResNet, self).__init__()
         self.name = 'SSRN'
         self.conv1x1 = nn.Conv3d(
             in_channels=1,
@@ -558,7 +558,7 @@ class SSRN_network(nn.Module):
         return self.full_connection(x4)
 
 
-model = SSRN_network(BAND, CLASSES_NUM, 2).cuda()
+model = S3KAIResNet(BAND, CLASSES_NUM, 2).cuda()
 
 summary(model, input_data=(1, img_rows, img_cols, BAND), verbose=1)
 
@@ -708,9 +708,7 @@ def select(groundTruth):  #divide dataset into train and test datasets
 for index_iter in range(ITER):
     print('iter:', index_iter)
     #define the model
-    #net = pResNet(32, 48, CLASSES_NUM, BAND, 2, 16, bottleneck=True)
-    #net = resnet20(num_classes=CLASSES_NUM)
-    net = SSRN_network(BAND, CLASSES_NUM, 2)
+    net = S3KAIResNet(BAND, CLASSES_NUM, 2)
 
     if PARAM_OPTIM == 'diffgrad':
         optimizer = optim2.DiffGrad(
@@ -776,7 +774,7 @@ for index_iter in range(ITER):
     kappa = metrics.cohen_kappa_score(pred_test, gt_test[:-VAL_SIZE])
 
     torch.save(
-        net.state_dict(), "./models/MS2KIResNetpatch_" + str(img_rows) + '_' +
+        net.state_dict(), "./models/S3KAIResNetpatch_" + str(img_rows) + '_' +
         Dataset + '_split_' + str(VALIDATION_SPLIT) + '_lr_' + str(lr) +
         PARAM_OPTIM + '_kernel_' + str(PARAM_KERNEL_SIZE) + str(
             round(overall_acc, 3)) + '.pt')
@@ -791,12 +789,12 @@ for index_iter in range(ITER):
 print("--------" + " Training Finished-----------")
 record.record_output(
     OA, AA, KAPPA, ELEMENT_ACC, TRAINING_TIME, TESTING_TIME,
-    './report/' + 'MS2KIResNetpatch:' + str(img_rows) + '_' + Dataset + 'split'
+    './report/' + 'S3KAIResNetpatch:' + str(img_rows) + '_' + Dataset + 'split'
     + str(VALIDATION_SPLIT) + 'lr' + str(lr) + PARAM_OPTIM + '_kernel_' +
     str(PARAM_KERNEL_SIZE) + '.txt')
 
 Utils.generate_png(
     all_iter, net, gt_hsi, Dataset, device, total_indices,
-    './classification_maps/' + 'MS2KIResNetpatch:' + str(img_rows) + '_' +
+    './classification_maps/' + 'S3KAIResNetpatch:' + str(img_rows) + '_' +
     Dataset + 'split' + str(VALIDATION_SPLIT) + 'lr' + str(lr) + PARAM_OPTIM +
     '_kernel_' + str(PARAM_KERNEL_SIZE))
