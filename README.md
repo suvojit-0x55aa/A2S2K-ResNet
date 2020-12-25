@@ -64,6 +64,8 @@ For deatiled results refer to Table IV-VII of our paper.
 
 ## Citation
 
+If you use A2S2K-ResNet code in your research, we would appreciate a citation to the original paper:
+
     @article{roy2020a2s2kresnet,
             author={S. K. {Roy} and S. {Manna} and T. {Song} and L. {Bruzzone}},
             journal={IEEE Transactions on Geoscience and Remote Sensing}, 
