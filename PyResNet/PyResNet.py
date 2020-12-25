@@ -16,7 +16,7 @@ import torch.nn.functional as F
 import torch.optim as optim
 from sklearn import metrics, preprocessing
 from sklearn.decomposition import PCA
-from sklearn.metrics import confusion_matrixs
+from sklearn.metrics import confusion_matrix
 
 import geniter
 import record
