@@ -67,13 +67,12 @@ For deatiled results refer to Table IV-VII of our paper.
 ## Citation
 
 If you use A2S2K-ResNet code in your research, we would appreciate a citation to the original paper:
-
-    @article{roy2020a2s2kresnet,
-            author={S. K. {Roy} and S. {Manna} and T. {Song} and L. {Bruzzone}},
-            journal={IEEE Transactions on Geoscience and Remote Sensing}, 
-            title={Attention-Based Adaptive Spectral-Spatial Kernel ResNet for Hyperspectral Image Classification}, 
-            year={2021},
-            volume={59},
-            number={9},
-            pages={7831-7843},
-            doi={10.1109/TGRS.2020.3043267}}
+```
+    @article{roy2020attention,
+     title={Attention-based adaptive spectral-spatial kernel resnet for hyperspectral image classification},
+     author={Swalpa Kumar Roy, and Suvojit Manna, and Tiecheng Song, and Lorenzo Bruzzone},
+     journal={IEEE Transactions on Geoscience and Remote Sensing},
+     year={2020},
+     publisher={IEEE}
+     }
+```
